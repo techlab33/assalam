@@ -22,13 +22,20 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   prayers_times: ^0.0.6
   get: ^4.6.6
-  intl: ^0.19.0
+  intl:
   geolocator: ^11.0.0
   flutter_compass:
   permission_handler: ^11.3.1
   geocoding: ^3.0.0
-  http: ^1.2.1
+  http:
   fluttertoast: ^8.2.5
+  swipeable_button_view:
+  page_transition:
+  maths:
+  translator:
+  flutter_local_notifications:
+  awesome_notifications:
+  timezone:
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +78,9 @@ flutter:
     - assets/fonts/
     - assets/logos/
     - assets/images/
+    - assets/images/compass.png
+    - assets/images/mosque.png
+    - assets/images/tasbih.png
 
 
 

@@ -1,5 +1,8 @@
 import 'package:assalam/screens/authentication/log_in_page/login_page.dart';
 import 'package:assalam/screens/authentication/registration_page/registration_page.dart';
+import 'package:assalam/screens/settings_page/language.dart';
+import 'package:assalam/screens/settings_page/notification.dart';
+import 'package:assalam/screens/settings_page/profile_page.dart';
 import 'package:assalam/screens/settings_page/widgets/custom_list_view_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +29,9 @@ class SettingsPage extends StatelessWidget {
               text: 'Profile',
               image: 'assets/icons/user.png',
               icon: Icons.arrow_forward_ios,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile(),));
+              },
             ),
             // Premium
             CustomListViewCard(
@@ -40,14 +45,18 @@ class SettingsPage extends StatelessWidget {
               text: 'Notification',
               image: 'assets/icons/notification.png',
               icon: Icons.arrow_forward_ios,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationPage()));
+              },
             ),
             // Languages
             CustomListViewCard(
               text: 'Languages',
               image: 'assets/icons/language.png',
               icon: Icons.arrow_forward_ios,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TranslatorPage(),));
+              },
             ),
             // Share
             CustomListViewCard(

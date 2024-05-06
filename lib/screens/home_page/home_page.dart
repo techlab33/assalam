@@ -8,14 +8,21 @@ import 'package:assalam/screens/home_page/pages/wallpaper_page.dart';
 import 'package:assalam/screens/home_page/widgets/gird_view_container_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:swipeable_button_view/swipeable_button_view.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool isFinished=false;
+  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -92,9 +99,10 @@ class HomePage extends StatelessWidget {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text('Asr',style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white)),
-                                        Text('12:45 PM',style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white)),
-                                        Text('View Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white)),
+                                        Text('Asr',style: TextStyle(fontSize: 12, color: Colors.white)),
+                                        Text('12:45 PM',style: TextStyle(fontSize: 12, color: Colors.white)),
+                                        SizedBox(height: 6,),
+                                        Text('View Time',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                                       ],
                                     ),
 
@@ -119,7 +127,52 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: 40),
+                const SizedBox(height: 20,),
+
+                SwipeableButtonView(
+                  buttonText: 'Ask anything with Chatbot',
+                  buttonWidget: Container(
+                    child: Icon(Icons.arrow_forward_ios_rounded,
+                      color: Colors.grey,
+                    ),),
+                  activeColor: Color(0xFF009C41),
+                  isFinished: isFinished,
+                  onWaitingProcess: () {
+                    Future.delayed(Duration(seconds: 2), () {
+                      setState(() {
+
+                        showDialog(
+                          context: context,
+                          builder: (context) => new AlertDialog(
+                            title: new Text('Attention !!!'),
+                            content: Text(
+                                'This Feature will Coming Soon...'),
+                            actions: <Widget>[
+                              ElevatedButton(onPressed: () {
+                                setState(() {
+                                  isFinished = true;
+                                  Navigator.pop(context);
+                                });
+                              }, child: Text("okay")),
+                            ],
+                          ),
+                        );
+
+                        // isFinished = true;
+
+                      });
+                    });
+                  },
+                  onFinish: () async {
+
+                    setState(() {
+                      isFinished = false;
+                    });
+                  },
+                ),
+
+
+                const SizedBox(height: 30),
 
                 // Grid view
                 SizedBox(
@@ -134,7 +187,7 @@ class HomePage extends StatelessWidget {
                       GridViewContainerCard(
                         image: 'assets/icons/tasbih.png',
                         text: 'Tasbih',
-                        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const TasbihPage())),
+                        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Tasbih())),
                       ),
                       GridViewContainerCard(
                         image: 'assets/icons/hadith.png',

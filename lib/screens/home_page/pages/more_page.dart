@@ -1,5 +1,6 @@
 import 'package:assalam/screens/home_page/pages/qiblah_page.dart';
 import 'package:assalam/screens/home_page/widgets/gird_view_container_card.dart';
+import 'package:assalam/screens/qiblah_page/qiblah_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,7 +59,7 @@ class MorePage extends StatelessWidget {
                       GridViewContainerCard(
                         image: 'assets/icons/kaaba.png',
                         text: 'Qiblah',
-                        onPressed: () => Get.to(QiblaDirectionPage(), duration: Duration(milliseconds: 600)),
+                        onPressed: () => Get.to(QiblaPage(), duration: Duration(milliseconds: 600)),
                       ),
                     ],
                   ),
